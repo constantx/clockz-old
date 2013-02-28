@@ -1,0 +1,58 @@
+@import 'common/reset-global.less';
+@import 'common/css3.less';
+@import 'common/var.less';
+////////////////////////////////////////////////////////////
+
+html, body{
+    height: 100%;
+}
+
+body{
+    background-color: @colorBlack;
+    color: @colorLight;
+    font-size: 16px; 
+    line-height: @leading;
+    overflow: hidden;
+}
+
+#gridUI{
+    position: fixed;
+    width: @widthContainer;
+    height: 100%;
+    margin: 0 (100%-@widthContainer)/2;
+    z-index: 9999;
+}
+
+.grid{
+    .boxSizing(border-box);
+    padding: 0 (@line/2)/@em;
+    float: left;
+    width: @column;
+    height: 100%;
+    background-color: fadeout(@colorRed,80);
+}
+
+#mainContainer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    overflow: hidden;
+    .boxShadow(0px 5px 15px 0px #222);
+    background-color: @colorBlack;
+    -webkit-transition: bottom 0.2s ease-out;
+}
+
+#faceContainer{
+    width: 100%;
+    height: 100%;
+}
+
+#library{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background: @colorLight url('../images/pattern-library.png') 0 0 repeat;
+}
