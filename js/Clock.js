@@ -9,11 +9,11 @@ var Clock = Composer.Model.extend({
         minute: 0,
         second: 0,
         millisecond: 0,
-        
+
         handSecond: 0,
         handMinute: 0,
         handHour: 0,
-        
+
         since: null, //count up
         until: null, //count down
 
@@ -24,19 +24,19 @@ var Clock = Composer.Model.extend({
         free: true,
         cost: 0,
     },
-    
+
     init: function(){
-        // _.bindAll(this, 'updateTime', 'start');
-        
+        _.bindAll(this, 'updateTime', 'start');
+
         return this;
     },
-    
+
     updateTime: function(){
         var lex = this;
         var now = new Date();
-        
+
         //console.log(new Date() + ' second: ' + now.get('Seconds') + ' | angle: ' + (360/60) * now.get('Seconds'));
-        
+
         this.set({
             'now': now,
             'year': now.get('FullYear'),
@@ -46,18 +46,18 @@ var Clock = Composer.Model.extend({
             'minute': now.get('Minutes'),
             'second': now.get('Seconds'),
             'millisecond': now.get('Milliseconds'),
-            
+
             'handSecond': (360/60) * now.get('Seconds'),
             'handMinute': (360/60) * now.get('Minutes'),
             'handHour': (360/12) * (now.get('Hours')%12)
         });
     },
-    
+
     start: function(){
         this.set({'started':true});
         this.updateTime();
         this.updateTime.periodical(10);
-        
+
         return this;
     }
 });

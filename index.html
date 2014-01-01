@@ -1,67 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>coooh</title>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
-    <link rel="stylesheet/less" type="text/css" href="/css/main.less" media="all" />
-    <link rel="stylesheet/less" type="text/css" href="/css/ipad.less" />    
-    
-    <script type="text/javascript" charset="utf-8" src="/libs/cordova-1.8.0.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/libs/mootools-core-1.4.5-full-nocompat-yc.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/libs/mootools-more-1.4.0.1.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/libs/composer-0.7.6.js"></script>
+  <meta charset="utf-8">
+  <title>coooh</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet/less" type="text/css" href="/css/main.less" media="all" />
+  <link rel="stylesheet/less" type="text/css" href="/css/ipad.less" />
+
+  <script type="text/javascript" charset="utf-8" src="/libs/underscore-min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/libs/mootools-core-1.4.5-full-nocompat-yc.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/libs/mootools-more-1.4.0.1.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/libs/composer-0.7.6.js"></script>
 
 
-    <script type="text/javascript" charset="utf-8" src="/js/Clock.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/js/FaceView.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/js/Library.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/js/App.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/js/LibraryView.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/js/AppView.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/Clock.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/FaceView.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/Library.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/App.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/LibraryView.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/AppView.js"></script>
 
-    <!-- new faces add here, each has its own folder with 2 files, face.less && face.js -->
-    <link href="/faces/constantx_v1/face.less" rel="stylesheet/less" type="text/css"/>
-    <script src ="/faces/constantx_v1/face.js" type="text/javascript" charset="utf-8"></script>
-    
-    <!-- make sure ton include less.js after less stylesheet -->
-    <script type="text/javascript" charset="utf-8" src="/libs/less-1.3.0.min.js"></script>    
+  <!-- new faces add here, each has its own folder with 2 files, face.less && face.js -->
+  <link href="/faces/constantx_v1/face.less" rel="stylesheet/less" type="text/css"/>
+  <script src ="/faces/constantx_v1/face.js" type="text/javascript" charset="utf-8"></script>
 
-    <script type="text/javascript">
-        // If you want to dragging, uncomment this section
-        document.addEventListener("touchmove", function(e){
-            e.preventDefault(); 
-        }, false);
-        
-        
-        function startApp(){
-            less.env = 'development';
-            window.appData = new App();
+  <!-- make sure ton include less.js after less stylesheet -->
+  <script type="text/javascript" charset="utf-8" src="/libs/less-1.3.0.min.js"></script>
 
-            window.appView = new AppView({
-                el: $('mainContainer'),
-                model: appData
-            });
-        }
-        
-        function onBodyLoad()
-        {   
-            if(window.device && window.device.platform){
-                //mobile
-                document.addEventListener("deviceready", startApp, false);
-            }else{
-                //desktop
-                window.addEvent('domready', startApp);
-            }
-        }
-    </script>
+  <script type="text/javascript">
+    // If you want to dragging, uncomment this section
+    document.addEventListener("touchmove", function(e){
+      e.preventDefault();
+    }, false);
+
+
+    function startApp(){
+      less.env = 'development';
+      window.appData = new App();
+
+      window.appView = new AppView({
+        el: $('mainContainer'),
+        model: appData
+      });
+    }
+
+    function onBodyLoad()
+    {
+      if(window.device && window.device.platform){
+        //mobile
+        document.addEventListener("deviceready", startApp, false);
+      }else{
+        //desktop
+        window.addEvent('domready', startApp);
+      }
+    }
+  </script>
 </head>
 <body onload="onBodyLoad()">
 <body>
-    <div id="mainContainer">
-        <div id="faceContainer"></div>
-    </div>
-    <div id="library"></div>
+  <div id="mainContainer">
+    <div id="faceContainer"></div>
+  </div>
+  <div id="library"></div>
 </body>
 </html>

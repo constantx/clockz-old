@@ -3,14 +3,14 @@ var AppView = Composer.Controller.extend({
     init: function(){
         var lex = this;
 
-        // _.bindAll(this,
-        //     'initViews',
-        //     'initEvents',
-        //     'render', 
-        //     'start', 
-        //     'showGrid', 
-        //     'toggleLibrary'
-        // );
+        _.bindAll(this,
+            'initViews',
+            'initEvents',
+            'render',
+            'start',
+            'showGrid',
+            'toggleLibrary'
+        );
 
         this.initViews();
         this.initEvents();
@@ -49,7 +49,7 @@ var AppView = Composer.Controller.extend({
 
     initEvents: function(){
         var lex = this;
-        
+
         this.model.bind('change:currentFace', this.render);
         this.model.bind('change:toggleLibrary', this.toggleLibrary);
         this.model.bind('change:showGrid', this.showGrid);
@@ -60,14 +60,14 @@ var AppView = Composer.Controller.extend({
                 'toggleLibrary': !(lex.model.get('toggleLibrary')),
                 'showGrid': !(lex.model.get('showGrid'))
             });
-        });  
+        });
     },
 
     render: function(){
         this.faceContainer.empty().adopt(
             this.currentFace.el
-        );  
-        
+        );
+
         return this;
     },
 
@@ -91,7 +91,7 @@ var AppView = Composer.Controller.extend({
     showGrid: function(){
         if(!this.gridUI){
             this.gridUI = new Element('div#gridUI');
-        
+
             for(var i=0; i<8; i++){
                 this.gridUI.adopt(
                     new Element('div.grid.col1',{
@@ -99,7 +99,7 @@ var AppView = Composer.Controller.extend({
                     })
                 );
             }
-            
+
             //if show grid
             this.gridUI.inject($$('body')[0], 'bottom');
         }else{
@@ -107,7 +107,7 @@ var AppView = Composer.Controller.extend({
                 this.gridUI.fade('in');
             }
             else{
-                this.gridUI.fade('out');    
+                this.gridUI.fade('out');
             }
         }
     }
